@@ -35,6 +35,7 @@ class InteractiveRecord
     end.compact.join(", ")
   end
   
+  def save
 
   
   
