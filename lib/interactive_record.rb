@@ -41,7 +41,7 @@ class InteractiveRecord
       VALUES (#{values_for_insert})
     SQL
     InteractiveRecord.dbc(sql)
-    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
+    @id = InteractiveRecord.dbc("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
   
   
