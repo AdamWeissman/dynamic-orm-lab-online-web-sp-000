@@ -29,19 +29,13 @@ class InteractiveRecord
     self.class.column_names.delete_if {|col| col == "id"}.join(", ")
   end
   
-  def values_for_insert
+  def values_for_insert #remember that collect returns an array
     self.class.column_names.collect do |col_name|
       "'#{send(col_name)}'" unless send(col_name).nil?
     end.compact.join(", ")
   end
   
-   def values_for_insert
-    values = []
-    self.class.column_names.each do |col_name|
-      values << "'#{send(col_name)}'" unless send(col_name).nil?
-    end
-    values.join(", ")
-  end
+
   
   
   
